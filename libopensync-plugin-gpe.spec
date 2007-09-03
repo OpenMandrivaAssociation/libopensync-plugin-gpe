@@ -1,12 +1,11 @@
 %define name	libopensync-plugin-gpe
-%define version	0.20
-%define release %mkrel 2
+%define version	0.22
+%define release %mkrel 1
 
 Name: 	 	%{name}
-Summary: 	GPE plugin for opensync synchronization tool
 Version: 	%{version}
 Release: 	%{release}
-
+Summary: 	GPE plugin for opensync synchronization tool
 Source:		svn://svn.opensync.org/plugins/gpe/%{name}-%{version}.tar.bz2
 URL:		http://www.opensync.org
 License:	LGPL
