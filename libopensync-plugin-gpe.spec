@@ -11,7 +11,7 @@ URL:		http://www.opensync.org
 License:	LGPL
 Group:		Office
 BuildRoot:	%{_tmppath}/%{name}-buildroot
-
+BuildRequires:	scons
 BuildRequires:	opensync-devel >= 0.20
 BuildRequires:  libneon-devel
 
@@ -20,15 +20,13 @@ This plugin allows applications using OpenSync to synchronise via GPE
 
 %prep
 %setup -q
-autoreconf -sfi
 
 %build
-%configure2_5x
-%make
-										
+scons prefix=%{_prefix} libsuffix=%{_lib}
+
 %install
 rm -rf $RPM_BUILD_ROOT
-%makeinstall_std
+scons install DESTDIR=%{buildroot}
 
 %find_lang %name
 
@@ -40,6 +38,3 @@ rm -rf $RPM_BUILD_ROOT
 %doc AUTHORS
 %{_libdir}/opensync/plugins/*
 %{_datadir}/opensync/defaults/*
-%{_includedir}/opensync-1.0/opensync/gpe_sync.h
-
-
