@@ -1,5 +1,5 @@
 %define name	libopensync-plugin-gpe
-%define version	0.33
+%define version	0.34
 %define release %mkrel 1
 
 Name: 	 	%{name}
@@ -8,10 +8,10 @@ Release: 	%{release}
 Summary: 	GPE plugin for opensync synchronization tool
 Source:		http://www.opensync.org/download/releases/%{version}/%{name}-%{version}.tar.bz2
 URL:		http://www.opensync.org
-License:	LGPL
+License:	GPLv2+
 Group:		Office
 BuildRoot:	%{_tmppath}/%{name}-buildroot
-BuildRequires:	scons
+BuildRequires:	cmake
 BuildRequires:	opensync-devel >= 0.20
 BuildRequires:  libneon-devel
 
@@ -22,11 +22,14 @@ This plugin allows applications using OpenSync to synchronise via GPE
 %setup -q
 
 %build
-scons prefix=%{_prefix} libsuffix=%{_lib}
+%cmake
+%make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-scons install DESTDIR=%{buildroot}
+cd build
+%makeinstall_std
+cd -
 
 %find_lang %name
 
