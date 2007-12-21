@@ -10,6 +10,7 @@ Source:		http://www.opensync.org/download/releases/%{version}/%{name}-%{version}
 URL:		http://www.opensync.org
 License:	GPLv2+
 Group:		Office
+BuildRoot:	%{_tmppath}/%{name}-buildroot
 BuildRequires:	cmake
 BuildRequires:	opensync-devel >= 0.20
 BuildRequires:  libneon-devel
