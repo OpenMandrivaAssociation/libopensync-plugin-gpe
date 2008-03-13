@@ -1,43 +1,42 @@
-%define name	libopensync-plugin-gpe
-%define version	0.36
-%define release %mkrel 1
-
-Name: 	 	%{name}
-Version: 	%{version}
-Release: 	%{release}
-Summary: 	GPE plugin for opensync synchronization tool
-Source:		http://www.opensync.org/download/releases/%{version}/%{name}-%{version}.tar.bz2
+Name: 	 	libopensync-plugin-gpe
+Version: 	0.22
+Epoch:		1
+Release: 	%{mkrel 2}
+Summary: 	GPE plugin for OpenSync synchronization framework
+Source0:	http://www.opensync.org/download/releases/%{version}/%{name}-%{version}.tar.bz2
 URL:		http://www.opensync.org
-License:	GPLv2+
+License:	LGPLv2+
 Group:		Office
 BuildRoot:	%{_tmppath}/%{name}-buildroot
-BuildRequires:	cmake
-BuildRequires:	opensync-devel >= 0.20
+BuildRequires:	libopensync-devel < 0.30
 BuildRequires:  libneon-devel
+Requires:	libopensync >= %{epoch}:%{version}
 
 %description
-This plugin allows applications using OpenSync to synchronise via GPE
+This plugin allows GPE-based devices to synchronize using the OpenSync
+framework.
 
 %prep
 %setup -q
+autoreconf -sfi
 
 %build
-%cmake
+%configure2_5x
 %make
-
+										
 %install
-rm -rf $RPM_BUILD_ROOT
-cd build
+rm -rf %{buildroot}
 %makeinstall_std
-cd -
+rm -f %{buildroot}%{_includedir}/opensync-1.0/opensync/gpe_sync.h
 
-%find_lang %name
+%find_lang %{name}
 
 %clean
-rm -rf $RPM_BUILD_ROOT
+rm -rf %{buildroot}
 
 %files -f %{name}.lang
 %defattr(-,root,root)
 %doc AUTHORS
-%{_libdir}/opensync-1.0/plugins/*
-%{_datadir}/opensync-1.0/defaults/*
+%{_libdir}/opensync/plugins/*
+%{_datadir}/opensync/defaults/*
+
