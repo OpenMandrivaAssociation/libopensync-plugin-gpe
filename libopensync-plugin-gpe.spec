@@ -1,7 +1,7 @@
 Name: 	 	libopensync-plugin-gpe
 Version: 	0.22
 Epoch:		1
-Release: 	%{mkrel 2}
+Release: 	%{mkrel 3}
 Summary: 	GPE plugin for OpenSync synchronization framework
 Source0:	http://www.opensync.org/download/releases/%{version}/%{name}-%{version}.tar.bz2
 URL:		http://www.opensync.org
