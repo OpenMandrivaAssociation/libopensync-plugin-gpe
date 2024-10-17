@@ -4,7 +4,7 @@ Epoch:		1
 Release: 	%{mkrel 3}
 Summary: 	GPE plugin for OpenSync synchronization framework
 Source0:	http://www.opensync.org/download/releases/%{version}/%{name}-%{version}.tar.bz2
-URL:		http://www.opensync.org
+URL:		https://www.opensync.org
 License:	LGPLv2+
 Group:		Office
 BuildRoot:	%{_tmppath}/%{name}-buildroot
