@@ -8,6 +8,11 @@ URL:		https://www.opensync.org
 License:	LGPLv2+
 Group:		Office
 BuildRoot:	%{_tmppath}/%{name}-buildroot
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	libopensync-devel < 0.30
 BuildRequires:  libneon-devel
 Requires:	libopensync >= %{epoch}:%{version}
